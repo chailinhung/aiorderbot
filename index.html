@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>正在取得使用者名稱...</title>
+    <title>正在取得名字...</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f4f7f9; }
@@ -15,7 +15,7 @@
     <div class="loader"></div>
     <script>
         // 【重要】請在此處填入您的資訊
-        const LIFF_ID = '2010215507-TXivMPb5'; 
+        const LIFF_ID = '2010215507-TXivMPb5';
         const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzi10-r0peJARUqFQhHES3Q1qdkjgBghm1HlnwjHsNC0vpdGUP2tilKroOAjZArzTcPVQ/exec';
 
         async function init() {
@@ -39,7 +39,7 @@
                 }
             } catch (e) {
                 console.error('LIFF Error:', e);
-                // 發生錯誤時，嘗試帶著原有參數回 GAS，名字標記為未知
+                // 發生錯誤時，嘗試帶著原有參數回 GAS，名字標記為空
                 const urlParams = new URLSearchParams(window.location.search);
                 urlParams.set('uName', '');
                 urlParams.set('action', 'order');
