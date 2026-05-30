@@ -14,7 +14,6 @@
 <body>
     <div class="loader"></div>
     <script>
-        // 自動帶入您專案中的資訊
         const LIFF_ID = '2010215507-TXivMPb5'; 
         const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzi10-r0peJARUqFQhHES3Q1qdkjgBghm1HlnwjHsNC0vpdGUP2tilKroOAjZArzTcPVQ/exec';
 
@@ -26,16 +25,22 @@
                     return;
                 }
 
-                // 【極速優化】改用本地解碼，省去連網抓 Profile 的 1~2 秒
+                let userName = "";
+                
+                // 第一層：嘗試極速解碼 (ID Token)
                 const idToken = liff.getDecodedIDToken();
-                const userName = idToken ? idToken.name : "訂購人";
+                if (idToken && idToken.name) {
+                    userName = idToken.name;
+                } else {
+                    // 第二層：如果解碼失敗，才使用連網抓取 (getProfile)
+                    const profile = await liff.getProfile();
+                    userName = profile.displayName;
+                }
                 
                 const urlParams = new URLSearchParams(window.location.search);
-                urlParams.set('uName', userName);
+                urlParams.set('uName', userName || "訂購人");
                 
-                // 瞬間重定向回 GAS
-                const finalUrl = GAS_WEB_APP_URL + '?' + urlParams.toString();
-                window.location.replace(finalUrl);
+                window.location.replace(GAS_WEB_APP_URL + '?' + urlParams.toString());
             } catch (e) {
                 console.error('LIFF Error:', e);
                 const urlParams = new URLSearchParams(window.location.search);
