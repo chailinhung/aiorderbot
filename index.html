@@ -18,7 +18,7 @@
         const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzi10-r0peJARUqFQhHES3Q1qdkjgBghm1HlnwjHsNC0vpdGUP2tilKroOAjZArzTcPVQ/exec';
 
         async function init() {
-            // 設定 3 秒強制跳轉定時器 (Timeout)
+            // 設定 5 秒強制跳轉定時器 (Timeout)
             const timeoutPromise = new Promise((resolve) => {
                 setTimeout(() => {
                     console.log('LIFF Timeout: Redirecting with default name...');
@@ -52,7 +52,7 @@
                 }
             })();
 
-            // 競賽：看是 LIFF 先跑完還是 3 秒先到
+            // 競賽：看是 LIFF 先跑完還是 5 秒先到
             const result = await Promise.race([liffPromise, timeoutPromise]);
 
             if (result && result.waitLogin) return; // 如果正在跳轉登入，則不執行後續
