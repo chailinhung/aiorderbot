@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2菜單載入中...</title>
+    <title>菜單載入中...</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f4f7f9; }
@@ -35,13 +35,6 @@
                         return { waitLogin: true };
                     }
 
-                    // 【修改處】刪除解碼邏輯，直接連網抓取最新 profile
-                    const profile = await liff.getProfile();
-                    const userName = profile.displayName;
-                    
-                    return { userName: userName || "" };
-
-                    /*
                     let userName = "";
                     // 第一層：嘗試極速解碼 (ID Token)
                     const idToken = liff.getDecodedIDToken();
@@ -53,7 +46,7 @@
                         userName = profile.displayName;
                     }
                     return { userName: userName || "" };
-                    */
+
                 } catch (e) {
                     console.error('LIFF Error:', e);
                     return { userName: "" };
