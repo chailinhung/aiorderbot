@@ -35,6 +35,13 @@
                         return { waitLogin: true };
                     }
 
+                    // 【修改處】刪除解碼邏輯，直接連網抓取最新 profile
+                    const profile = await liff.getProfile();
+                    const userName = profile.displayName;
+                    
+                    return { userName: userName || "" };
+
+                    /*
                     let userName = "";
                     // 第一層：嘗試極速解碼 (ID Token)
                     const idToken = liff.getDecodedIDToken();
@@ -46,6 +53,7 @@
                         userName = profile.displayName;
                     }
                     return { userName: userName || "" };
+                    */
                 } catch (e) {
                     console.error('LIFF Error:', e);
                     return { userName: "" };
