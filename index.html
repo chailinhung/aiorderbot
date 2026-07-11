@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>菜單載入中請稍後...</title>
+    <title>菜單載入中...</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body { font-family: -apple-system, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f4f7f9; }
@@ -61,11 +61,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const finalName = result.userName || "";
             urlParams.set('uName', finalName);
-            
-            // 💡【新增：隨機避讓機制】隨機產生 0 到 1000 毫秒（1秒）的延遲時間，把同時點擊的流量打散
-            const delayMs = Math.floor(Math.random() * 1000);
-            console.log(`隨機避讓：延遲 ${delayMs} 毫秒後跳轉`);
-            await sleep(delayMs);
+
             
             window.location.replace(GAS_WEB_APP_URL + '?' + urlParams.toString());
         }
