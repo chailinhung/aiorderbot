@@ -61,7 +61,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             const finalName = result.userName || "";
             urlParams.set('uName', finalName);
-
             
             window.location.replace(GAS_WEB_APP_URL + '?' + urlParams.toString());
         }
