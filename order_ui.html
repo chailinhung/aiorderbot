@@ -214,9 +214,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    // 🔔 1. 請在此處替換成你部署好的 Google Apps Script 網路應用程式 URL
+    // 🔔 1. 請在此處替換成你部署好的 Google Apps Script 網路應用程式 URL 及 對應lineBot LIFF_ID
     const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzi10-r0peJARUqFQhHES3Q1qdkjgBghm1HlnwjHsNC0vpdGUP2tilKroOAjZArzTcPVQ/exec";
-
+    const LIFF_ID = '2010215507-TXivMPb5';
     // 🔔 2. 宣告原本由 GAS 傳入的變數，現在改為從網址參數（Query URL）讀取
     let shopName = "";
     let groupId = "";
@@ -437,6 +437,49 @@
         <td><button class="btn-delete" onclick="deleteOrder(this, '${r.user}', '${r.meal}')">刪除</button></td>
       </tr>`).join('');
     }
+
+    // 💡 8. 菜單載入後，背景liff取得名字
+    async function silentInitLIFF() {
+      try {
+        // 背景初始化 LIFF
+        await liff.init({ liffId: LIFF_ID });
+                
+        // 如果沒登入，強制跳轉
+        if (!liff.isLoggedIn()) {
+          liff.login({ redirectUri: window.location.href });
+          return;
+        }
+
+        // 極速取得 LINE 名字
+        let userName = "";
+        const idToken = liff.getDecodedIDToken();
+        if (idToken && idToken.name) {
+          userName = idToken.name;
+        } else {
+          const profile = await liff.getProfile();
+          userName = profile.displayName;
+        }
+
+        // 💡 關鍵 2：取得名字後，默默塞回輸入框，並解除唯讀
+        const nameInput = document.getElementById("userNameInput");
+        if (nameInput) {
+          nameInput.value = userName;
+          nameInput.readOnly = false; // 讓使用者如果名字不對可以自己改
+        }
+          console.log("背景成功取得訂購人：", userName);
+
+        } catch (e) {
+          console.error("LIFF 載入失敗，但不影響使用者看菜單", e);
+          // 失敗時的防錯：讓輸入框可以手動輸入
+          const nameInput = document.getElementById("userNameInput");
+          if (nameInput) {
+            nameInput.placeholder = "請輸入您的名字";
+            nameInput.readOnly = false;
+        }
+      }
+    }
+    // 立即執行
+    silentInitLIFF();
   </script>
 </body>
 </html>
