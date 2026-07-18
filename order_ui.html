@@ -11,32 +11,30 @@
       --text: #333; 
     }
     
-    /* 🎯 縮減至極致小比例字體與緊湊間距 */
     body { 
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-      padding: 4px; /* 減半 */
+      padding: 4px; 
       background: var(--bg); 
       color: var(--text); 
-      font-size: 12px; /* 基礎字型縮小（原本 16px/25px） */
+      font-size: 12px; 
       margin: 0; 
       line-height: 1.2;
     }
     
     .card { 
       background: white; 
-      border-radius: 6px; /* 縮小圓角 */
-      padding: 6px; /* 間距減半 */
+      border-radius: 6px; 
+      padding: 6px; 
       box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
       margin-bottom: 6px; 
       box-sizing: border-box;
     }
     
-    /* 🎯 標題縮小 */
     h2 { 
       color: var(--primary); 
       text-align: center; 
       margin: 0 0 6px 0; 
-      font-size: 1.1rem; /* 大幅縮小 */
+      font-size: 1.1rem; 
     }
     
     .input-group { 
@@ -52,7 +50,7 @@
     
     input[type="text"] { 
       width: 100%; 
-      padding: 5px; /* 縮小內距 */
+      padding: 5px; 
       border: 1.5px solid #ddd; 
       border-radius: 4px; 
       box-sizing: border-box; 
@@ -63,11 +61,10 @@
       border-color: var(--primary);
     }
     
-    /* 菜單列表緊湊化 */
     .menu-item { 
       display: flex; 
       align-items: center; 
-      padding: 5px 0; /* 高度縮小 */
+      padding: 5px 0; 
       border-bottom: 1px solid #f0f0f0; 
     }
     
@@ -79,7 +76,7 @@
     
     .item-name { 
       font-weight: 600; 
-      font-size: 0.95rem; /* 字體縮小 */
+      font-size: 0.95rem; 
       white-space: nowrap; 
       overflow: hidden; 
       text-overflow: ellipsis; 
@@ -91,7 +88,6 @@
       margin-top: 1px;
     }
     
-    /* 數量控制按鈕縮小 50% */
     .qty-controls { 
       display: flex; 
       align-items: center; 
@@ -102,7 +98,7 @@
     .btn-qty { 
       background: #f5f5f5; 
       border: 1px solid #ccc; 
-      width: 26px; /* 尺寸大幅縮小（原本 40px/50px） */
+      width: 26px; 
       height: 26px; 
       border-radius: 50%; 
       font-size: 1rem; 
@@ -122,12 +118,11 @@
       font-size: 0.95rem; 
     }
     
-    /* 提交按鈕縮小 */
     .btn-submit { 
       background: var(--primary); 
       color: white; 
       border: none; 
-      padding: 8px; /* 縮小高度 */
+      padding: 8px; 
       border-radius: 15px; 
       font-size: 0.95rem; 
       font-weight: 600; 
@@ -140,17 +135,16 @@
       cursor: not-allowed;
     }
     
-    /* 🎯 歷史明細表格極致精簡 */
     table { 
       width: 100%; 
       border-collapse: collapse; 
       margin-top: 6px; 
-      font-size: 0.8rem; /* 字體縮小 */
+      font-size: 0.8rem; 
       table-layout: fixed; 
     }
     
     th, td { 
-      padding: 4px 2px; /* 減至極小間距 */
+      padding: 4px 2px; 
       border-bottom: 1px solid #eee; 
       overflow: hidden; 
       text-overflow: ellipsis;
@@ -160,13 +154,12 @@
       font-weight: bold;
       background-color: #f9f9f9;
     }
-    th:nth-child(1), td:nth-child(1) { width: 22%; text-align: left; } /* 人名 */
-    th:nth-child(2), td:nth-child(2) { width: 38%; text-align: left; } /* 餐點 */
-    th:nth-child(3), td:nth-child(3) { width: 10%; text-align: right; } /* 數 */
-    th:nth-child(4), td:nth-child(4) { width: 15%; text-align: right; } /* 金額 */
-    th:nth-child(5), td:nth-child(5) { width: 15%; text-align: center; } /* 刪除 */
+    th:nth-child(1), td:nth-child(1) { width: 22%; text-align: left; } 
+    th:nth-child(2), td:nth-child(2) { width: 38%; text-align: left; } 
+    th:nth-child(3), td:nth-child(3) { width: 10%; text-align: right; } 
+    th:nth-child(4), td:nth-child(4) { width: 15%; text-align: right; } 
+    th:nth-child(5), td:nth-child(5) { width: 15%; text-align: center; } 
     
-    /* 刪除按鈕極致縮小 */
     .btn-delete { 
       background: #fff0f0; 
       color: #a00; 
@@ -182,7 +175,6 @@
       color: #999; 
     }
     
-    /* 彈出視窗字體適度調整 */
     .large-swal { 
       font-size: 0.95rem !important; 
       width: 90% !important; 
@@ -212,12 +204,13 @@
     </table>
   </div>
 
+  <!-- 💡 引入 LINE LIFF SDK -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    // 🔔 1. 請在此處替換成你部署好的 Google Apps Script 網路應用程式 URL 及 對應lineBot LIFF_ID
     const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzi10-r0peJARUqFQhHES3Q1qdkjgBghm1HlnwjHsNC0vpdGUP2tilKroOAjZArzTcPVQ/exec";
     const LIFF_ID = '2010215507-TXivMPb5';
-    // 🔔 2. 宣告原本由 GAS 傳入的變數，現在改為從網址參數（Query URL）讀取
+    
     let shopName = "";
     let groupId = "";
     let sessionId = "";
@@ -226,7 +219,6 @@
     let quantities = [];
 
     window.onload = async function() {
-      // 解析網址參數：例如 ?shop=麥當勞&gid=123&sid=456&uName=王小明
       const urlParams = new URLSearchParams(window.location.search);
       shopName = urlParams.get('shop') || "";
       groupId = urlParams.get('gid') || "";
@@ -234,13 +226,16 @@
       uName = urlParams.get('uName') || "";
 
       if (shopName) document.getElementById('shop-title').innerText = "🏪 " + shopName;
+      
+      // 如果網址帶有名字優先使用，若無則等候 LIFF 載入
       if (uName) document.getElementById('userName').value = uName;
       
-      // 非同步向 GAS 索取菜單與歷史訂單資料
       await fetchMenuAndHistory();
+      
+      // 菜單加載後，啟動背景 LIFF 獲取姓名
+      silentInitLIFF();
     };
 
-    // 🔔 3. 向 GAS 後端 API 取得菜單資訊
     async function fetchMenuAndHistory() {
       try {
         const response = await fetch(`${GAS_WEB_APP_URL}?action=get_menu_and_init&shop=${encodeURIComponent(shopName)}&gid=${groupId}&sid=${sessionId}&type=MEAL`);
@@ -248,7 +243,6 @@
         
         const result = await response.json();
 
-        // 🎯 攔截後端回傳的檢查訂餐狀態或過期訂餐
         if (result.status === "ERROR") {
           Swal.fire({
             icon: 'error',
@@ -257,8 +251,7 @@
             allowOutsideClick: false,
             confirmButtonText: '確定'
           }).then(() => {
-            // 關閉 LIFF 視窗或網頁
-            if (typeof liff !== "undefined") {
+            if (typeof liff !== "undefined" && liff.isInClient()) {
               liff.closeWindow();
             } else {
               window.close();
@@ -269,12 +262,8 @@
         }
         
         globalMenu = result.menu || [];
-        
-        // 渲染菜單
         quantities = new Array(globalMenu.length).fill(0);
         renderMenu();
-        
-        // 渲染歷史紀錄
         renderHistoryTable(result.history || []);
       } catch (error) {
         console.error('初始化失敗:', error);
@@ -315,7 +304,6 @@
       document.getElementById('total-price').innerText = total;
     }
     
-    // 🔔 4. 修改後的送出訂單邏輯 (改用 POST fetch 傳送資料到 GAS)
     function submitForm() {
       const name = document.getElementById('userName').value.trim();
       if (!name) { Swal.fire('請先輸入姓名！'); return; }
@@ -358,7 +346,7 @@
               quantities.fill(0); 
               globalMenu.forEach((_, i) => document.getElementById('qty-'+i).innerText='0'); 
               updateTotal();
-              loadHistory(); // 重新整理明細
+              loadHistory();
             } else {
               throw new Error(resData.message || '點餐失敗');
             }
@@ -373,7 +361,6 @@
       });
     }
 
-    // 🔔 5. 修改後的刪除訂單邏輯 (改用 POST fetch 傳送資料到 GAS)
     function deleteOrder(btn, userName, mealName) {
       Swal.fire({
         title: '確認刪除',
@@ -418,7 +405,6 @@
       });
     }
 
-    // 🔔 6. 重新載入歷史訂單明細
     async function loadHistory() {
       try {
         const response = await fetch(`${GAS_WEB_APP_URL}?action=get_orders&gid=${groupId}&sid=${sessionId}&type=MEAL`);
@@ -429,7 +415,6 @@
       }
     }
 
-    // 🔔 7. 渲染歷史訂單表格的輔助函式
     function renderHistoryTable(data) {
       const body = document.getElementById('history-body');
       body.innerHTML = data.length === 0 ? '<tr><td colspan="5">無資料</td></tr>' : data.map(r => `<tr>
@@ -438,19 +423,20 @@
       </tr>`).join('');
     }
 
-    // 💡 8. 菜單載入後，背景liff取得名字
+    // 💡 背景liff載入名字
     async function silentInitLIFF() {
       try {
-        // 背景初始化 LIFF
+        if (typeof liff === "undefined") {
+          throw new Error("LIFF SDK 未成功載入");
+        }
+        
         await liff.init({ liffId: LIFF_ID });
                 
-        // 如果沒登入，強制跳轉
         if (!liff.isLoggedIn()) {
           liff.login({ redirectUri: window.location.href });
           return;
         }
 
-        // 極速取得 LINE 名字
         let userName = "";
         const idToken = liff.getDecodedIDToken();
         if (idToken && idToken.name) {
@@ -460,26 +446,23 @@
           userName = profile.displayName;
         }
 
-        // 💡 關鍵 2：取得名字後，默默塞回輸入框，並解除唯讀
-        const nameInput = document.getElementById("userNameInput");
-        if (nameInput) {
+        // 💡 修正：使用正確的 ID "userName" 填入名字
+        const nameInput = document.getElementById("userName");
+        if (nameInput && userName) {
           nameInput.value = userName;
-          nameInput.readOnly = false; // 讓使用者如果名字不對可以自己改
-        }
+          nameInput.readOnly = false; 
           console.log("背景成功取得訂購人：", userName);
+        }
 
-        } catch (e) {
-          console.error("LIFF 載入失敗，但不影響使用者看菜單", e);
-          // 失敗時的防錯：讓輸入框可以手動輸入
-          const nameInput = document.getElementById("userNameInput");
-          if (nameInput) {
-            nameInput.placeholder = "請輸入您的名字";
-            nameInput.readOnly = false;
+      } catch (e) {
+        console.error("LIFF 載入失敗，但不影響使用者看菜單", e);
+        const nameInput = document.getElementById("userName");
+        if (nameInput) {
+          nameInput.placeholder = "請輸入您的名字";
+          nameInput.readOnly = false;
         }
       }
     }
-    // 立即執行
-    silentInitLIFF();
   </script>
 </body>
 </html>
